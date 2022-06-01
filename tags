@@ -1,0 +1,135 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AccessKey	src/http/httpclient.go	/^	AccessKey       string$/;"	v
+AllocDevToEdgeDriver	src/parse/parseDev.go	/^type AllocDevToEdgeDriver struct {$/;"	t
+AllocDevToGroup	src/parse/parseDev.go	/^type AllocDevToGroup struct {$/;"	t
+Config	src/conf/conf.go	/^type Config struct {$/;"	t
+CreateDev	src/create/createDev.go	/^func CreateDev(idcDevMap map[string]*parse.DevInfo, f *excelize.File, order []string) error {$/;"	f
+CreateTemplate	src/create/createTemplate.go	/^func CreateTemplate(templateMap map[string]*parse.IotTemplate) error {$/;"	f
+CreateTemplateObj	src/create/createTemplate.go	/^func CreateTemplateObj(temp parse.IotTemplateObj) (string, error) {$/;"	f
+DelDev	src/del/delDev.go	/^func DelDev(idcDevMap map[string]*parse.DevInfo) error {$/;"	f
+DelTemplate	src/del/delTemplate.go	/^func DelTemplate(templateMap map[string]*parse.IotTemplate) error {$/;"	f
+DevGroup	src/parse/parseDev.go	/^type DevGroup struct {$/;"	t
+DevInfo	src/parse/parseDev.go	/^type DevInfo struct {$/;"	t
+DevStartRow	src/parse/parseDev.go	/^	DevStartRow            = 3$/;"	v
+DevTableNameStartIndex	src/parse/parseDev.go	/^	DevTableNameStartIndex = 1$/;"	v
+DeviceGroupResp	src/parse/parseDev.go	/^type DeviceGroupResp struct {$/;"	t
+DoCreate	src/http/httpclient.go	/^func DoCreate(Url string, url string, verb string, queryMap map[string]interface{}, bodyData []byte) (map[string]interface{}, error) {$/;"	f
+DoParseDevExcel	src/parse/parseDev.go	/^func DoParseDevExcel(filePath string, sRow int, eRow int) (map[string]*DevInfo, *excelize.File, error, []string) {$/;"	f
+DoParseTemplateExcel	src/parse/parseTemplate.go	/^func DoParseTemplateExcel(filePath string) (map[string]*IotTemplate, error) {$/;"	f
+Execute	cmd/root.go	/^func Execute() {$/;"	f
+ExtensionKey_Device	src/parse/constant.go	/^	ExtensionKey_Device             = "extd-"              \/\/false|string\/\/保留$/;"	c
+ExtensionKey_DeviceAlias	src/parse/constant.go	/^	ExtensionKey_DeviceAlias        = "extd-alias"         \/\/false|string$/;"	c
+ExtensionKey_DeviceDesc	src/parse/constant.go	/^	ExtensionKey_DeviceDesc         = "extd-desc"          \/\/false|string$/;"	c
+ExtensionKey_DeviceDriverId	src/parse/constant.go	/^	ExtensionKey_DeviceDriverId     = "extd-driverid"      \/\/false|string$/;"	c
+ExtensionKey_DeviceEdgeId	src/parse/constant.go	/^	ExtensionKey_DeviceEdgeId       = "extd-edge-id"       \/\/true|string$/;"	c
+ExtensionKey_DeviceGatewayId	src/parse/constant.go	/^	ExtensionKey_DeviceGatewayId    = "extd-gwid"          \/\/false|string$/;"	c
+ExtensionKey_DeviceName	src/parse/constant.go	/^	ExtensionKey_DeviceName         = "extd-name"          \/\/true|string$/;"	c
+ExtensionKey_DevicePath	src/parse/constant.go	/^	ExtensionKey_DevicePath         = "extd-path"          \/\/false|string$/;"	c
+ExtensionKey_DeviceProtocol	src/parse/constant.go	/^	ExtensionKey_DeviceProtocol     = "extd-protocol"      \/\/false|string$/;"	c
+ExtensionKey_DeviceRegisterType	src/parse/constant.go	/^	ExtensionKey_DeviceRegisterType = "extd-register-type" \/\/false|string$/;"	c
+ExtensionKey_DeviceSpaceGuid	src/parse/constant.go	/^	ExtensionKey_DeviceSpaceGuid    = "extd-space-guid"    \/\/false|string$/;"	c
+ExtensionKey_DeviceTag	src/parse/constant.go	/^	ExtensionKey_DeviceTag          = "extd-tag"           \/\/true|string$/;"	c
+ExtensionKey_DeviceType	src/parse/constant.go	/^	ExtensionKey_DeviceType         = "extd-type"          \/\/false|string$/;"	c
+ExtensionKey_Point	src/parse/constant.go	/^	ExtensionKey_Point           = "extp-"            \/\/{false|string|测点tag}\/\/保留$/;"	c
+ExtensionKey_PointAbsValue	src/parse/constant.go	/^	ExtensionKey_PointAbsValue   = "extp-abs-val"     \/\/{false|floag |测点tag}$/;"	c
+ExtensionKey_PointAlarmLevel	src/parse/constant.go	/^	ExtensionKey_PointAlarmLevel = "extp-alarm-level" \/\/{false|integer|测点tag}$/;"	c
+ExtensionKey_PointAlarmType	src/parse/constant.go	/^	ExtensionKey_PointAlarmType  = "extp-alarm-type"  \/\/{true |integer|测点tag}$/;"	c
+ExtensionKey_PointAlias	src/parse/constant.go	/^	ExtensionKey_PointAlias      = "extp-alias"       \/\/{false|string|测点别名}$/;"	c
+ExtensionKey_PointAoBound	src/parse/constant.go	/^	ExtensionKey_PointAoBound    = "extp-ao-bound"    \/\/{false|string|测点tag}$/;"	c
+ExtensionKey_PointDataScope	src/parse/constant.go	/^	ExtensionKey_PointDataScope  = "extp-data-scope"  \/\/{false|string|测点tag}$/;"	c
+ExtensionKey_PointDataType	src/parse/constant.go	/^	ExtensionKey_PointDataType   = "extp-data-type"   \/\/{false|string|测点tag}$/;"	c
+ExtensionKey_PointDesc	src/parse/constant.go	/^	ExtensionKey_PointDesc       = "extp-desc"        \/\/{false|string|测点描述}$/;"	c
+ExtensionKey_PointDeviceTag	src/parse/constant.go	/^	ExtensionKey_PointDeviceTag  = "extp-device-tag"  \/\/{true |string|测点tag}$/;"	c
+ExtensionKey_PointName	src/parse/constant.go	/^	ExtensionKey_PointName       = "extp-name"        \/\/{true |string|测点tag}$/;"	c
+ExtensionKey_PointPercentage	src/parse/constant.go	/^	ExtensionKey_PointPercentage = "extp-percetage"   \/\/{false|floag |测点tag}$/;"	c
+ExtensionKey_PointPeriod	src/parse/constant.go	/^	ExtensionKey_PointPeriod     = "extp-period"      \/\/{true |integer|测点tag}$/;"	c
+ExtensionKey_PointPointType	src/parse/constant.go	/^	ExtensionKey_PointPointType  = "extp-type"        \/\/{true |string|测点tag} enum{"AI"|"AO"|"DI"|"DO"|"Alarm"}$/;"	c
+ExtensionKey_PointPrecision	src/parse/constant.go	/^	ExtensionKey_PointPrecision  = "extp-precision"   \/\/{false|float |测点tag}$/;"	c
+ExtensionKey_PointStatus	src/parse/constant.go	/^	ExtensionKey_PointStatus     = "extp-status"      \/\/{false|string|测点tag}$/;"	c
+ExtensionKey_PointTag	src/parse/constant.go	/^	ExtensionKey_PointTag        = "extp-tag"         \/\/{true |string|测点tag}$/;"	c
+ExtensionKey_PointUnit	src/parse/constant.go	/^	ExtensionKey_PointUnit       = "extp-unit"        \/\/{false|string|测点tag}$/;"	c
+GetDevGroupID	src/create/createDev.go	/^func GetDevGroupID(spaceName string, dgm map[string]string) (string, string) {$/;"	f
+GetUUID	src/parse/parseTemplate.go	/^func GetUUID() string {$/;"	f
+InitConfig	src/conf/conf.go	/^func InitConfig(path string) error {$/;"	f
+IotPropertie	src/parse/parseTemplate.go	/^type IotPropertie struct {$/;"	t
+IotTemplate	src/parse/parseTemplate.go	/^type IotTemplate struct {$/;"	t
+IotTemplateObj	src/parse/parseTemplate.go	/^type IotTemplateObj struct {$/;"	t
+IotUrl	src/http/httpclient.go	/^	IotUrl          string$/;"	v
+Key	src/parse/parseDev.go	/^type Key struct {$/;"	t
+NorthUrl	src/http/httpclient.go	/^	NorthUrl        string$/;"	v
+ParseResponse	src/http/httpclient.go	/^func ParseResponse(response *http.Response) (map[string]interface{}, error) {$/;"	f
+SecretAccessKey	src/http/httpclient.go	/^	SecretAccessKey string$/;"	v
+allocDev	src/create/createDev.go	/^func allocDev(alloc *parse.AllocDevToEdgeDriver) error {$/;"	f
+cmd	cmd/devRegister.go	/^package cmd$/;"	p
+cmd	cmd/root.go	/^package cmd$/;"	p
+cmd	cmd/templateCreate.go	/^package cmd$/;"	p
+conf	src/conf/conf.go	/^package conf$/;"	p
+confFile	cmd/root.go	/^	confFile string$/;"	v
+create	src/create/createDev.go	/^package create$/;"	p
+create	src/create/createTemplate.go	/^package create$/;"	p
+createDefine	src/parse/parseTemplate.go	/^func createDefine(xrmd xlsxRowMetaData) map[string]interface{} {$/;"	f
+createDev	src/create/createDev.go	/^func createDev(dev *parse.DevInfo) (string, error) {$/;"	f
+createDevExt	src/parse/parseDev.go	/^func createDevExt(xrmd xlsxRowMetaDevData) map[string]interface{} {$/;"	f
+createDevGroup	src/create/createDev.go	/^func createDevGroup(dp *parse.DevGroup) (string, error) {$/;"	f
+createPropertie	src/create/createTemplate.go	/^func createPropertie(templateId string, propertie map[string]*parse.IotPropertie, clissify string) error {$/;"	f
+dataFile	cmd/root.go	/^	dataFile string$/;"	v
+del	src/del/delDev.go	/^package del$/;"	p
+del	src/del/delTemplate.go	/^package del$/;"	p
+delDev	src/del/delDev.go	/^func delDev(devstr string) (float64, error) {$/;"	f
+delDevGroup	src/del/delDev.go	/^func delDevGroup(dgm map[string]string) error {$/;"	f
+delThing	src/del/delTemplate.go	/^func delThing(templateId string) (error) {$/;"	f
+desColNum	src/parse/parseDev.go	/^	desColNum              = 7 \/\/描述$/;"	v
+devGuidColNum	src/parse/parseDev.go	/^	devGuidColNum          = 13 \/\/dev guid  for del$/;"	v
+devGuidCustomColNum	src/parse/parseDev.go	/^	devGuidCustomColNum    = 6 \/\/custom devid$/;"	v
+devRegisterCmd	cmd/devRegister.go	/^var devRegisterCmd = &cobra.Command{$/;"	v
+devThingIdColNum	src/parse/parseDev.go	/^	devThingIdColNum       = 5 \/\/设备物模型(南向编码)$/;"	v
+endRow	cmd/root.go	/^	endRow   int$/;"	v
+event_count	src/create/createTemplate.go	/^	event_count = "1"$/;"	v
+extColNum	src/parse/parseDev.go	/^	extColNum              = 12 \/\/扩展描述$/;"	v
+formatDevInfo	src/parse/parseDev.go	/^func formatDevInfo(xrmd xlsxRowMetaDevData) (*DevInfo, error) {$/;"	f
+formatPropertie	src/parse/parseTemplate.go	/^func formatPropertie(xrmd xlsxRowMetaData) *IotPropertie {$/;"	f
+func	cmd/templateCreate.go	/^func init() {$/;"	v
+http	src/http/httpclient.go	/^package http$/;"	p
+init	cmd/devRegister.go	/^func init() {$/;"	f
+init	cmd/root.go	/^func init() {$/;"	f
+iotDevNameColNum	src/parse/parseDev.go	/^	iotDevNameColNum       = 11$/;"	v
+iotDriverIdColNum	src/parse/parseDev.go	/^	iotDriverIdColNum      = 9$/;"	v
+iotEdgeWizeIdColNum	src/parse/parseDev.go	/^	iotEdgeWizeIdColNum    = 10 \/\/平台数字边设备$/;"	v
+load	src/conf/conf.go	/^func (c *Config) load(path string) error {$/;"	f
+main	main.go	/^func main() {$/;"	f
+main	main.go	/^package main$/;"	p
+mvDevToGroup	src/create/createDev.go	/^func mvDevToGroup(groupName string, dg *parse.AllocDevToGroup) error {$/;"	f
+onInitialize	cmd/root.go	/^func onInitialize() {$/;"	f
+op	cmd/root.go	/^	op       string$/;"	v
+parse	src/parse/constant.go	/^package parse$/;"	p
+parse	src/parse/parseDev.go	/^package parse$/;"	p
+parse	src/parse/parseTemplate.go	/^package parse$/;"	p
+physicalDevNameColNum	src/parse/parseDev.go	/^	physicalDevNameColNum  = 4 \/\/物理设备名$/;"	v
+physicalGwIdColNum	src/parse/parseDev.go	/^	physicalGwIdColNum     = 3 \/\/物理网关Id$/;"	v
+pointDataTypeColNum	src/parse/parseTemplate.go	/^	pointDataTypeColNum  = 6 \/\/数据类型$/;"	v
+pointDefineColNum	src/parse/parseTemplate.go	/^	pointDefineColNum    = 8 \/\/测点定义集合$/;"	v
+pointDescColNum	src/parse/parseTemplate.go	/^	pointDescColNum      = 9 \/\/测点说明$/;"	v
+pointNameColNum	src/parse/parseTemplate.go	/^	pointNameColNum      = 4 \/\/测点名称$/;"	v
+pointNameIdColNum	src/parse/parseTemplate.go	/^	pointNameIdColNum    = 5 \/\/测点ID$/;"	v
+pointTypeColNum	src/parse/parseTemplate.go	/^	pointTypeColNum      = 7 \/\/测点类型$/;"	v
+rangeKey	src/parse/parseTemplate.go	/^type rangeKey struct {$/;"	t
+rootCmd	cmd/root.go	/^var rootCmd = &cobra.Command{$/;"	v
+spaceGuidColNum	src/parse/parseDev.go	/^	spaceGuidColNum        = 2 \/\/spacc Guid$/;"	v
+spaceNameColNum	src/parse/parseDev.go	/^	spaceNameColNum        = 1 \/\/spacc name$/;"	v
+startRow	cmd/root.go	/^	startRow int$/;"	v
+syncToNorthDevAdd	src/create/createDev.go	/^func syncToNorthDevAdd(devId string, dev *parse.DevInfo) error {$/;"	f
+syncToNorthDevDel	src/del/delDev.go	/^func syncToNorthDevDel(devstr string) error {$/;"	f
+templateDescColNum	src/parse/parseTemplate.go	/^	templateDescColNum   = 3 \/\/模板对象说明$/;"	v
+templateNameColNum	src/parse/parseTemplate.go	/^	templateNameColNum   = 1 \/\/模板对象名$/;"	v
+templateNameIdColNum	src/parse/parseTemplate.go	/^	templateNameIdColNum = 2 \/\/模板对象自定义id$/;"	v
+templateStartRow	src/parse/parseTemplate.go	/^	templateStartRow            = 2 \/\/开始行$/;"	v
+templateTableNameStartIndex	src/parse/parseTemplate.go	/^	templateTableNameStartIndex = 1 \/\/开始表$/;"	v
+tkeelTemplateMap	src/parse/parseTemplate.go	/^var tkeelTemplateMap map[string]*IotTemplate$/;"	v
+var	cmd/templateCreate.go	/^var templateCreateCmd = &cobra.Command{$/;"	v
+xlsxRowMetaData	src/parse/parseTemplate.go	/^type xlsxRowMetaData struct {$/;"	t
+xlsxRowMetaDevData	src/parse/parseDev.go	/^type xlsxRowMetaDevData struct {$/;"	t
