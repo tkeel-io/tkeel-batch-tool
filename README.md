@@ -41,7 +41,7 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 ```json
 {
-  "iotUrl":"http://127.0.0.1:31234",  //tkeel 平台url           
+  "iotUrl":"http://ip:port/apis/tkeel-device",  //tkeel 平台url           
         "token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NDA3NzE4MSwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.ZP4aJvJrFad5nJQEqO4kGqINdTg7ST7yrJTbJEH_q017FF_UP3fS"  //用户token
   }
 ```
