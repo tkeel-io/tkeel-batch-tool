@@ -1,4 +1,8 @@
 {
-  "iotUrl":"http://127.0.0.1:31234",
-  "token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NDA3NzE4MSwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.ZP4aJvJrFad5nJQEqO4kGqINdTg7ST7yrJTbJEH_q017FF_UP3fS_F0RBFoNyY63TbaKzaBCv4Rrkd9reRawyw"
+    "northUrl": "",
+    "iotUrl": "http://tkeel.io:30080//apis/tkeel-device",
+    "token": "eyJhbGciOiJI************14UM2OikJQ",
+    "access_key": "",
+    "secretaccesskey": "",
+    "refresh_token": "MTNHOWE************VLYJRI"
 }

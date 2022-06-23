@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"tkeelBatchTool/src/conf"
 	"tkeelBatchTool/src/http"
 	"tkeelBatchTool/src/parse"
 	//"os"
@@ -36,7 +37,7 @@ func DelSpaceTree(spaceTreeMap map[string]*parse.SpaceNodeInfo, order []string) 
 
 func delspaceTree(idsMap map[string]interface{}) error {
 	jsonstr, _ := json.Marshal(idsMap)
-	resultMap, err := http.DoCreate(http.IotUrl, "/v1/groups/delete", "POST", nil, jsonstr)
+	resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/groups/delete", "POST", nil, jsonstr)
 	if err != nil {
 		return err
 	}

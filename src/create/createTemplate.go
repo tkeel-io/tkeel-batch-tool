@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"tkeelBatchTool/src/conf"
 	"tkeelBatchTool/src/http"
 	"tkeelBatchTool/src/parse"
 )
@@ -57,7 +58,7 @@ func createPropertie(templateId string, propertie map[string]*parse.IotPropertie
 	}
 	jsonstr, _ := json.Marshal(propertie)
 	fmt.Printf("%s", string(jsonstr))
-	resultMap, err := http.DoCreate(http.IotUrl, "/v1/templates/"+templateId+"/"+clissify, "POST", nil, jsonstr)
+	resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/templates/"+templateId+"/"+clissify, "POST", nil, jsonstr)
 	if err != nil {
 		return err
 	}
@@ -70,7 +71,7 @@ func createPropertie(templateId string, propertie map[string]*parse.IotPropertie
 
 func CreateTemplateObj(temp parse.IotTemplateObj) (string, error) {
 	jsonstr, _ := json.Marshal(temp)
-	resultMap, err := http.DoCreate(http.IotUrl, "/v1/templates", "POST", nil, jsonstr)
+	resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/templates", "POST", nil, jsonstr)
 	if err != nil {
 		fmt.Println("create templateObj err\n")
 		return "", err

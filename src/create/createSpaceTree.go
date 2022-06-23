@@ -2,6 +2,7 @@ package create
 
 import (
 	"fmt"
+	"tkeelBatchTool/src/conf"
 	"tkeelBatchTool/src/http"
 	"tkeelBatchTool/src/parse"
 	//"github.com/360EntSecGroup-Skylar/excelize/v2"
@@ -32,7 +33,7 @@ func CreateSpaceTree(spaceTreeMap map[string]*parse.SpaceNodeInfo, f *excelize.F
 
 func createSpaceTree(spaceNode *parse.SpaceNodeInfo) (string,error) {
 	jsonstr, _ := json.Marshal(spaceNode)
-	resultMap, err := http.DoCreate(http.IotUrl, "/v1/groups", "POST", nil, jsonstr)
+	resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/groups", "POST", nil, jsonstr)
 	if err != nil {
 		return "",err
 	}

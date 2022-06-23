@@ -37,14 +37,33 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 3、运行前置条件
 
-配置config.josn   
+登录平台
 
-```json
-{
-  "iotUrl":"http://ip:port/apis/tkeel-device",  //tkeel 平台url           
-        "token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NDA3NzE4MSwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.ZP4aJvJrFad5nJQEqO4kGqINdTg7ST7yrJTbJEH_q017FF_UP3fS"  //用户token
-  }
+3.1 直接输入
 ```
+> tkeelBatchTool login http://tkeel.io:30080/ --tenant <your tenant name> --username <your username> --password <your password>
+
+✅  You are Login as admin in tenant an!
+✅  AccessToken is [eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NTk5MDQ4NSwic3ViIjoidXNyLTc3MzUwNWZkZDM1MzY1MTI3NDEyNmJlNmQyMDIifQ.HF9cUKDOmhvHooqwPSH1e3xKnpPNqyfhDlSLQ0aP45nSDptHigu06PbKkjcEEEvmDCMVlZ6wY_P55QZVZnb6Lg]
+✅  RefreshToken is [YZG5NME4YJMTZTEXYY01NJJHLWJIMZKTMMY0YTZJOTZHNJMW]
+✅  Login Token save in ./config.json!
+✅  You are Login Success!
+```
+
+3.2 交互式输入
+```
+>  tkeelBatchTool login http://tkeel.io:30080/
+
+? Please enter your tenant:  an
+? Please enter your username:  admin
+? Please enter your password:  ******
+✅  You are Login as admin in tenant an!
+✅  AccessToken is [eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NTk5MDU5Miwic3ViIjoidXNyLTc3MzUwNWZkZDM1MzY1MTI3NDEyNmJlNmQyMDIifQ.lsha1wiI-RDB9ZPAbFWarQAyJqRqYsDEkofqy5I9aXVvbPnPKute1hbNcJ5qwQ4AZ85A_BDSvPM7L41Yfi12Sg]
+✅  RefreshToken is [ODY4OGM0NTKTODU0ZC01NJC2LWFKNDMTNJE5MDA1MWEYMZEY]
+✅  Login Token save in ./config.json!
+✅  You are Login Success!
+```
+
 
 4、命令概览：以下命令是一个完整的流程 注意顺序
 

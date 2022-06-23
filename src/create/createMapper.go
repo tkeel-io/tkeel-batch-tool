@@ -1,6 +1,7 @@
 package create
 
 import (
+	"tkeelBatchTool/src/conf"
 	"tkeelBatchTool/src/http"
 	"tkeelBatchTool/src/parse"
 	//"github.com/360EntSecGroup-Skylar/excelize/v2"
@@ -17,7 +18,7 @@ func CreateMapper(mapperMap map[string]([]*parse.Expression), f *excelize.File) 
         expMap := make(map[string]interface{})
         expMap["expressions"] = v
 		jsonstr, _ := json.Marshal(expMap)
-		resultMap, err := http.DoCreate(http.IotUrl, "/v1/devices/"+k+"/relation", "POST", nil, jsonstr)
+		resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/devices/"+k+"/relation", "POST", nil, jsonstr)
 		if err != nil {
 			log.Error(err)
 			return err
