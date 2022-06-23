@@ -1,8 +1,8 @@
 {
-  "northUrl": "",
-  "iotUrl": "",
-  "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NTk4OTI1Miwic3ViIjoidXNyLTc3MzUwNWZkZDM1MzY1MTI3NDEyNmJlNmQyMDIifQ.eTyESH7rlhtJQ3HHPimbdXcstvj4LgpneIBVCrouwPM_YLKaaIfMCQTvsrfg_EgjXjLVsazUnZvfYk3B_5Zt3g",
-  "access_key": "",
-  "secretaccesskey": "",
-  "refresh_token": "ZTU1YJG3OWUTMTLMOC01YJC4LWJINGYTM2QYNTVMMTU2Y2E3"
+    "northUrl": "",
+    "iotUrl": "http://tkeel.io:30080//apis/tkeel-device",
+    "token": "eyJhbGciOiJI************14UM2OikJQ",
+    "access_key": "",
+    "secretaccesskey": "",
+    "refresh_token": "MTNHOWE************VLYJRI"
 }

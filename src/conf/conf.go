@@ -38,7 +38,7 @@ func InitConfig(path string) error {
 }
 
 func SaveConfig(path string) error {
-	buf, err := json.Marshal(DefaultConfig)
+	buf, err := json.MarshalIndent(DefaultConfig, "", "    ")
 	if err != nil {
 		return err
 	}
