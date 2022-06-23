@@ -2,6 +2,8 @@ package http
 
 import (
 	"fmt"
+	"tkeelBatchTool/src/conf"
+
 	//"time"
 
 	//"crypto/hmac"
@@ -15,14 +17,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-)
-
-var (
-	NorthUrl        string
-	IotUrl          string
-	Token           string
-	AccessKey       string
-	SecretAccessKey string
 )
 
 func DoCreate(Url string, url string, verb string, queryMap map[string]interface{}, bodyData []byte) (map[string]interface{}, error) {
@@ -65,7 +59,7 @@ func DoCreate(Url string, url string, verb string, queryMap map[string]interface
 
 	//add header option
 	reqest.Header.Add("Content-Type", "application/json")
-	reqest.Header.Add("Authorization", "Bearer "+Token)
+	reqest.Header.Add("Authorization", "Bearer "+conf.DefaultConfig.Token)
 
 	resp, err := client.Do(reqest)
 	if err != nil {

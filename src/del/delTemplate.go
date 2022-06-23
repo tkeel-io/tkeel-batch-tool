@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"tkeelBatchTool/src/conf"
 	"tkeelBatchTool/src/http"
 	"tkeelBatchTool/src/parse"
 	//"os"
@@ -37,7 +38,7 @@ func delTemplate(ids map[string]interface{}) error {
 	}
 	jsonstr, _ := json.Marshal(ids)
 	fmt.Printf("%s", string(jsonstr))
-	resultMap, err := http.DoCreate(http.IotUrl, "/v1/templates/delete", "POST", nil, jsonstr)
+	resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/templates/delete", "POST", nil, jsonstr)
 	if err != nil {
 		fmt.Println("del templateObj err\n")
 		return err

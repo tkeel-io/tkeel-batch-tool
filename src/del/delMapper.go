@@ -2,11 +2,13 @@ package del
 
 import (
 	"fmt"
+	"tkeelBatchTool/src/conf"
+
+	"encoding/json"
+	"errors"
 	//"strings"
 	"tkeelBatchTool/src/http"
 	"tkeelBatchTool/src/parse"
-	"encoding/json"
-	"errors"
 	//"os"
 )
 
@@ -31,7 +33,7 @@ func DelMapper(mapperMap map[string]([]*parse.Expression)) error {
 func delMapper(devId string, pathsMap map[string]interface{}) error {
 
 	jsonstr, _ := json.Marshal(pathsMap)
-	resultMap, err := http.DoCreate(http.IotUrl, "/v1/devices/"+devId+"/relation/delete", "POST", nil, jsonstr)
+	resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/devices/"+devId+"/relation/delete", "POST", nil, jsonstr)
 	if err != nil {
 		fmt.Println(err)
 		return err

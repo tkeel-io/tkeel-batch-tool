@@ -3,16 +3,18 @@ package conf
 import (
 	"encoding/json"
 	"io/ioutil"
-	"tkeelBatchTool/src/http"
 )
+
+var DefaultConfig = &Config{}
 
 //config
 type Config struct {
 	NorthUrl        string `json:"northUrl"`
 	IotUrl          string `json:"iotUrl"`
 	Token           string `json:"token"`
-	AccessKey       string `json:"accessKey"`
+	AccessKey       string `json:"access_key"`
 	Secretaccesskey string `json:"secretaccesskey"`
+	RefreshToken    string `json:"refresh_token"`
 }
 
 func (c *Config) load(path string) error {
@@ -28,16 +30,21 @@ func (c *Config) load(path string) error {
 }
 
 func InitConfig(path string) error {
-	c := &Config{}
-	err := c.load(path)
+	err := DefaultConfig.load(path)
 	if err != nil {
 		return err
 	}
-	//set
-	http.NorthUrl = c.NorthUrl
-	http.IotUrl = c.IotUrl
-	http.Token = c.Token
-	http.AccessKey = c.AccessKey
-	http.SecretAccessKey = c.Secretaccesskey
+	return nil
+}
+
+func SaveConfig(path string) error {
+	buf, err := json.Marshal(DefaultConfig)
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(path, buf, 555)
+	if err != nil {
+		return err
+	}
 	return nil
 }

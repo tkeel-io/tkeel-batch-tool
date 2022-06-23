@@ -37,7 +37,11 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 3、运行前置条件
 
-配置config.josn   
+登录平台
+
+```
+tkeelBatchTool login http://tkeel.io:30080/ --tenant <your tenant name> --username <your username> --password <your password>
+```
 
 ```json
 {

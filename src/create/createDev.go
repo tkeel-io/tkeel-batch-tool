@@ -2,6 +2,7 @@ package create
 
 import (
 	"fmt"
+	"tkeelBatchTool/src/conf"
 	"tkeelBatchTool/src/http"
 	"tkeelBatchTool/src/parse"
 	//"github.com/360EntSecGroup-Skylar/excelize/v2"
@@ -35,7 +36,7 @@ func CreateDev(devMap map[string]*parse.DevInfo, f *excelize.File, order []strin
 func createDev(dev *parse.DevInfo) (string, error) {
 	jsonstr, _ := json.Marshal(dev)
 	//fmt.Printf("%s",string(jsonstr))
-	resultMap, err := http.DoCreate(http.IotUrl, "/v1/devices", "POST", nil, jsonstr)
+	resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/devices", "POST", nil, jsonstr)
 	if err != nil {
 		fmt.Println("1")
 		return "", err
