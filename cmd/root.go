@@ -22,11 +22,12 @@ import (
 )
 
 var (
-	confFile string
-	dataFile string
-	op       string
-	endRow   int
-	startRow int
+	confFile   string
+	dataFile   string
+	outputPath string
+	op         string
+	endRow     int
+	startRow   int
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -57,8 +58,9 @@ func init() {
 	cobra.OnInitialize(onInitialize)
 	rootCmd.PersistentFlags().StringVarP(&confFile, "conf", "c", "", "The iot api config")
 	rootCmd.PersistentFlags().StringVarP(&dataFile, "file", "f", "", "The data excel")
-	rootCmd.PersistentFlags().StringVarP(&op, "op", "o", "", "add or del")
-    //rootCmd.PersistentFlags().IntVarP(&endRow, "end_row", "e", 0, "op end row")
+	rootCmd.PersistentFlags().StringVarP(&op, "op", "o", "", "add | del | down")
+	rootCmd.PersistentFlags().StringVarP(&outputPath, "output_path", "p", "excel", "The path save the excel template file .")
+	//rootCmd.PersistentFlags().IntVarP(&endRow, "end_row", "e", 0, "op end row")
 	//rootCmd.PersistentFlags().IntVarP(&startRow, "start_row", "s", 0, "op start row")
 }
 
