@@ -7,6 +7,7 @@ import (
 	"github.com/xuri/excelize/v2"
 	//"strconv"
 	"strings"
+	"tkeelBatchTool/src/conf"
 )
 
 //xlsx setting
@@ -17,7 +18,7 @@ var (
 	parentSpaceNodeNameColNum     = 1 //spacc name
 	parentSpaceNodeCustomIdColNum = 2 //spacc Guid
 
-	curSpaceNodeNameColNum     = 3 // 
+	curSpaceNodeNameColNum     = 3 //
 	curSpaceNodeCustomIdColNum = 4 //
 
 	curSpaceNodeExtColNum = 5
@@ -29,8 +30,8 @@ var (
 type xlsxRowMetaSpaceTreeData struct {
 	parentSpaceNodeName     string //spacc name
 	parentSpaceNodeCustomId string //spacc Guid
-	curSpaceNodeName        string 
-	curSpaceNodeCustomId    string 
+	curSpaceNodeName        string
+	curSpaceNodeCustomId    string
 	curSpaceNodeExt         string //ext
 	curSpaceNodeDesc        string //
 
@@ -59,27 +60,27 @@ func formatSpaceNodeInfo(xrmd xlsxRowMetaSpaceTreeData) (*SpaceNodeInfo, error) 
 
 	spaceNode := &SpaceNodeInfo{
 		Name:        xrmd.curSpaceNodeName,
-		CustomId:    xrmd.curSpaceNodeCustomId,
+		CustomId:    xrmd.curSpaceNodeCustomId + "-" + conf.DefaultConfig.TenantId,
 		ParentName:  xrmd.parentSpaceNodeName,
-		ParentId:    xrmd.parentSpaceNodeCustomId,
+		ParentId:    xrmd.parentSpaceNodeCustomId +"-" + conf.DefaultConfig.TenantId,
 		Description: xrmd.curSpaceNodeDesc,
 		Extension:   createSpaceNodeExt(xrmd),
 	}
 	return spaceNode, nil
 }
 
-func DoParseSpaceTreeExcel(filePath string, sRow int, eRow int) (map[string]*SpaceNodeInfo, *excelize.File, error,[]string) {
+func DoParseSpaceTreeExcel(filePath string, sRow int, eRow int) (map[string]*SpaceNodeInfo, *excelize.File, error, []string) {
 
 	//container
 	spaceTreeMap := make(map[string]*SpaceNodeInfo)
 	order := make([]string, 10000)
-    uuidMap := make(map[string]string)
+	uuidMap := make(map[string]string)
 
 	//open xlsx file
 	f, err := excelize.OpenFile(filePath)
 	if err != nil {
 		fmt.Println(err)
-		return spaceTreeMap, nil, err,order 
+		return spaceTreeMap, nil, err, order
 	}
 
 	//get table list
@@ -94,7 +95,7 @@ func DoParseSpaceTreeExcel(filePath string, sRow int, eRow int) (map[string]*Spa
 		ma, err := f.GetMergeCells(tableName)
 		if err != nil {
 			fmt.Println(err)
-			return spaceTreeMap, nil, err,order 
+			return spaceTreeMap, nil, err, order
 		}
 		for _, value := range ma {
 			if len(value) == 2 {
@@ -121,7 +122,7 @@ func DoParseSpaceTreeExcel(filePath string, sRow int, eRow int) (map[string]*Spa
 		rows, err := f.GetRows(tableName)
 		if err != nil {
 			fmt.Println(err)
-			return spaceTreeMap, nil, err,order 
+			return spaceTreeMap, nil, err, order
 		}
 
 		for _, row := range rows {
@@ -149,7 +150,7 @@ func DoParseSpaceTreeExcel(filePath string, sRow int, eRow int) (map[string]*Spa
 
 			cStr1, _ := excelize.ColumnNumberToName(curSpaceNodeCustomIdColNum)
 			axis1, _ := excelize.JoinCellName(cStr1, rowNum)
-			xrmd.excelAxis1 = axis1 
+			xrmd.excelAxis1 = axis1
 			xrmd.row = rowNum
 			//-------------------------
 			for colNum, colCell := range row {
@@ -180,18 +181,18 @@ func DoParseSpaceTreeExcel(filePath string, sRow int, eRow int) (map[string]*Spa
 				case colNum == parentSpaceNodeCustomIdColNum:
 					xrmd.parentSpaceNodeCustomId = strings.Trim(colCell, " ")
 					if xrmd.parentSpaceNodeCustomId == "" && xrmd.parentSpaceNodeName != "" {
-                        uuid, ok := uuidMap[xrmd.parentSpaceNodeName]
-                        if !ok {
-						    xrmd.parentSpaceNodeCustomId = GetUUID()
-                            uuidMap[xrmd.parentSpaceNodeName] = xrmd.parentSpaceNodeCustomId
-                        } else {
-                            xrmd.parentSpaceNodeCustomId = uuid 
-                        }
-						fmt.Println("parent",xrmd.parentSpaceNodeName, xrmd.parentSpaceNodeCustomId)
+						uuid, ok := uuidMap[xrmd.parentSpaceNodeName]
+						if !ok {
+							xrmd.parentSpaceNodeCustomId = GetUUID()
+							uuidMap[xrmd.parentSpaceNodeName] = xrmd.parentSpaceNodeCustomId
+						} else {
+							xrmd.parentSpaceNodeCustomId = uuid
+						}
+						fmt.Println("parent", xrmd.parentSpaceNodeName, xrmd.parentSpaceNodeCustomId)
 						err := f.SetCellValue(xrmd.tableName, xrmd.excelAxis, xrmd.parentSpaceNodeCustomId)
 						if err != nil {
 							fmt.Println("write parentSpaceNodeUUID error")
-							return nil, nil, errors.New("write parentSpaceNodeUUID error"),order 
+							return nil, nil, errors.New("write parentSpaceNodeUUID error"), order
 						}
 						f.Save()
 					}
@@ -201,20 +202,20 @@ func DoParseSpaceTreeExcel(filePath string, sRow int, eRow int) (map[string]*Spa
 					break
 				case colNum == curSpaceNodeCustomIdColNum:
 					xrmd.curSpaceNodeCustomId = strings.Trim(colCell, " ")
-					if xrmd.curSpaceNodeCustomId == "" && xrmd.curSpaceNodeName !=""{
-                        _, ok := uuidMap[xrmd.curSpaceNodeName]
-                        if !ok {
-						    xrmd.curSpaceNodeCustomId = GetUUID()
-                            uuidMap[xrmd.curSpaceNodeName] = xrmd.curSpaceNodeCustomId
-                        } else {
-							return nil, nil, errors.New("curSpaceNodeName repeat error"),order
-                        }
-                        
-						fmt.Println("cur",xrmd.curSpaceNodeName, xrmd.curSpaceNodeCustomId)
+					if xrmd.curSpaceNodeCustomId == "" && xrmd.curSpaceNodeName != "" {
+						_, ok := uuidMap[xrmd.curSpaceNodeName]
+						if !ok {
+							xrmd.curSpaceNodeCustomId = GetUUID()
+							uuidMap[xrmd.curSpaceNodeName] = xrmd.curSpaceNodeCustomId
+						} else {
+							return nil, nil, errors.New("curSpaceNodeName repeat error"), order
+						}
+
+						fmt.Println("cur", xrmd.curSpaceNodeName, xrmd.curSpaceNodeCustomId)
 						err := f.SetCellValue(xrmd.tableName, xrmd.excelAxis1, xrmd.curSpaceNodeCustomId)
 						if err != nil {
 							fmt.Println("write curSpaceNodeUUID error")
-							return nil, nil, errors.New("write curSpaceNodeUUID error"),order
+							return nil, nil, errors.New("write curSpaceNodeUUID error"), order
 						}
 						f.Save()
 					}
@@ -235,7 +236,7 @@ func DoParseSpaceTreeExcel(filePath string, sRow int, eRow int) (map[string]*Spa
 			err := checkSpaceTreeExcelValue(&xrmd)
 			if err != nil {
 				fmt.Println(err)
-				return nil, nil, err,order 
+				return nil, nil, err, order
 			}
 
 			info, _ := formatSpaceNodeInfo(xrmd)

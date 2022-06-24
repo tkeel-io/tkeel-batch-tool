@@ -11,6 +11,7 @@ import (
 	//"time"
 	"encoding/json"
 	"errors"
+	"tkeelBatchTool/src/conf"
 )
 
 //xlsx setting
@@ -243,13 +244,13 @@ func DoParseTemplateExcel(filePath string) (map[string]*IotTemplate, *excelize.F
 				//tkeelTemplateMap[xrmd.templateName].TemplateObj.Description = xrmd.templateDesc
 				tkeelTemplateMap[xrmd.templateName].TemplateObj.Description = "tkeelbatchtool add "
 			}
-            if xrmd.write || xrmd.templateNameId == "" {
+			if xrmd.write || xrmd.templateNameId == "" {
 				err := f.SetCellValue(xrmd.tableName, xrmd.excelAxis, tkeelTemplateMap[xrmd.templateName].TemplateObj.Id)
 				if err != nil {
 					fmt.Println("write templateUUID error")
 				}
 				f.Save()
-            }
+			}
 
 			// point
 			if xrmd.pointNameId == "" {
@@ -270,6 +271,9 @@ func DoParseTemplateExcel(filePath string) (map[string]*IotTemplate, *excelize.F
 			default:
 			}
 		}
+	}
+	for _, v := range tkeelTemplateMap {
+		v.TemplateObj.Id += "-" + conf.DefaultConfig.TenantId
 	}
 	//log.Debug("all templates ", tkeelTemplateMap)
 	return tkeelTemplateMap, f, err
@@ -313,9 +317,9 @@ func checkTemplateExcelValue(xrmd xlsxRowMetaData) error {
 	if xrmd.pointNameId == "" {
 		return errors.New("error: pointDataId is empty")
 	}
-    if xrmd.pointName == "" {
-        xrmd.pointName = xrmd.pointNameId 
-    }
+	if xrmd.pointName == "" {
+		xrmd.pointName = xrmd.pointNameId
+	}
 	if xrmd.pointDataType == "" {
 		return errors.New("error: pointDataType is empty")
 	}

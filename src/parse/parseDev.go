@@ -7,6 +7,7 @@ import (
 	"github.com/xuri/excelize/v2"
 	"strconv"
 	"strings"
+    "tkeelBatchTool/src/conf"
 )
 
 //xlsx setting
@@ -89,17 +90,17 @@ func formatDevInfo(xrmd xlsxRowMetaDevData) (*DevInfo, error) {
 
 	dev := &DevInfo{
 		Name:        xrmd.devName,
-		CustomId:    xrmd.devCustomId,
+        CustomId:    xrmd.devCustomId + "-" + conf.DefaultConfig.TenantId,
 		Description: xrmd.devDesc,
 
 		DirectConnection: xrmd.devDirectBool,
 		SelfLearn:        xrmd.devSelfLearnBool,
 
 		ParentName: xrmd.spaceName,
-		ParentId:   xrmd.spaceId,
+		ParentId:   xrmd.spaceId + "-" + conf.DefaultConfig.TenantId,
 
 		TemplateName: xrmd.devTemplateName,
-		TemplateId:   xrmd.devTemplateId,
+		TemplateId:   xrmd.devTemplateId + "-" + conf.DefaultConfig.TenantId,
 
 		Extension: createDevExt(xrmd),
 
@@ -246,9 +247,9 @@ func DoParseDevExcel(filePath string, sRow int, eRow int) (map[string]*DevInfo, 
 					break
 				case colNum == devSelfLearnColNum:
 					xrmd.devSelfLearn = strings.Trim(colCell, " ")
-                    if xrmd.devSelfLearn == ""{
-                        xrmd.devSelfLearn = "FALSE"
-                    }
+					if xrmd.devSelfLearn == "" {
+						xrmd.devSelfLearn = "FALSE"
+					}
 					break
 				case colNum == devTemplateNameColNum:
 					xrmd.devTemplateName = strings.Trim(colCell, " ")

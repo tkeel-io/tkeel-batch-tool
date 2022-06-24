@@ -50,7 +50,7 @@ var spaceTreeCmd = &cobra.Command{
 		if op == "del" {
 			// del
 			fmt.Println("start del \n")
-			if err := del.DelSpaceTree(content,order); err != nil {
+			if err := del.DelSpaceTree(content, order); err != nil {
 				//panic(err)
 				return
 			}

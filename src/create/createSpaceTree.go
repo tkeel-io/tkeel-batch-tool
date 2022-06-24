@@ -20,7 +20,7 @@ func CreateSpaceTree(spaceTreeMap map[string]*parse.SpaceNodeInfo, f *excelize.F
 		if !okd {
 			continue
 		}
-		_,err := createSpaceTree(node)
+		_, err := createSpaceTree(node)
 		if err != nil {
 			fmt.Println(err)
 			continue
@@ -31,11 +31,11 @@ func CreateSpaceTree(spaceTreeMap map[string]*parse.SpaceNodeInfo, f *excelize.F
 	return nil
 }
 
-func createSpaceTree(spaceNode *parse.SpaceNodeInfo) (string,error) {
+func createSpaceTree(spaceNode *parse.SpaceNodeInfo) (string, error) {
 	jsonstr, _ := json.Marshal(spaceNode)
 	resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/groups", "POST", nil, jsonstr)
 	if err != nil {
-		return "",err
+		return "", err
 	}
 	// todo
 	code, ok := resultMap["code"]
@@ -55,4 +55,3 @@ func createSpaceTree(spaceNode *parse.SpaceNodeInfo) (string,error) {
 	}*/
 	return "", nil
 }
-

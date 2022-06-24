@@ -16,17 +16,17 @@ func DelTemplate(templateMap map[string]*parse.IotTemplate) error {
 	for _, v := range templateMap {
 		id = append(id, v.TemplateObj.Id)
 	}
-    if len(id) == 0 {
-	    fmt.Println("del template id is null  ")
-        return errors.New("del error") 
-    }
-    idsMap := make(map[string]interface{})
-    idsMap["ids"] = id 
+	if len(id) == 0 {
+		fmt.Println("del template id is null  ")
+		return errors.New("del error")
+	}
+	idsMap := make(map[string]interface{})
+	idsMap["ids"] = id
 	err := delTemplate(idsMap)
 	if err != nil {
 		fmt.Println(err)
 		fmt.Println("del template err ")
-        return err 
+		return err
 	}
 	fmt.Println("del template success")
 	return nil

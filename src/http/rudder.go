@@ -66,7 +66,6 @@ func GetTenantLoginToken(host, tenantID, username, password string) (accessToken
 	return "", "", errors.Wrap(fmt.Errorf(errMsg), "get token error")
 }
 
-
 func Get(url string) (string, error) {
 	fmt.Println(url)
 	var (
