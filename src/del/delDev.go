@@ -13,12 +13,12 @@ import (
 func DelDev(devMap map[string]*parse.DevInfo) error {
 	fmt.Println("del dev")
 	var ids []string
-    idsMap := make(map[string]interface{})
+	idsMap := make(map[string]interface{})
 	for _, dev := range devMap {
 		ids = append(ids, dev.CustomId)
 	}
 
-    idsMap["ids"] = ids 
+	idsMap["ids"] = ids
 	fmt.Println("start del dev: \n", ids)
 	err := delDev(idsMap)
 	if err != nil {

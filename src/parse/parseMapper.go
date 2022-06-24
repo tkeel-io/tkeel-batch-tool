@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/xuri/excelize/v2"
 	"strings"
+	"tkeelBatchTool/src/conf"
 )
 
 //xlsx setting
@@ -53,6 +54,7 @@ type Expression struct {
 
 func formatExpression(xrmd xlsxRowMetaMapperData) (*Expression, error) {
 
+	xrmd.dev2Id += "-" + conf.DefaultConfig.TenantId
 	expression := &Expression{
 		Name:        "fromBatchTool_" + xrmd.dev1Name,
 		Path:        xrmd.dev1PointClassify + "." + xrmd.dev1PointDataName,
@@ -203,14 +205,14 @@ func DoParseMapperExcel(filePath string, sRow int, eRow int) (map[string]([]*Exp
 				return nil, nil, err
 			}
 
-			array, ok := MapperMap[xrmd.dev1Id]
+			array, ok := MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantId]
 			if !ok {
 				array = make([]*Expression, 0)
-				MapperMap[xrmd.dev1Id] = array
+				MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantId] = array
 			}
 			expression, _ := formatExpression(xrmd)
 			if expression != nil {
-                MapperMap[xrmd.dev1Id] = append(MapperMap[xrmd.dev1Id], expression)
+				MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantId] = append(MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantId], expression)
 			}
 		}
 	}
@@ -219,11 +221,11 @@ func DoParseMapperExcel(filePath string, sRow int, eRow int) (map[string]([]*Exp
 func checkMapperExcelValue(xrmd *xlsxRowMetaMapperData) error {
 	//check value
 	if xrmd.dev1Name == "" || xrmd.dev1Id == "" || xrmd.dev1PointClassify == "" || xrmd.dev1PointDataName == "" {
-	    fmt.Println("row =  ", xrmd.row)
+		fmt.Println("row =  ", xrmd.row)
 		return errors.New("dev1 data is error ")
 	}
 	if xrmd.dev2Name == "" || xrmd.dev2Id == "" || xrmd.dev2PointClassify == "" || xrmd.dev2PointDataName == "" {
-	    fmt.Println("row =  ", xrmd.row)
+		fmt.Println("row =  ", xrmd.row)
 		return errors.New("dev2 data is error ")
 	}
 	return nil

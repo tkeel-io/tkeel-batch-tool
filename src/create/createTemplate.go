@@ -53,7 +53,7 @@ func CreateTemplate(templateMap map[string]*parse.IotTemplate) error {
 
 func createPropertie(templateId string, propertie map[string]*parse.IotPropertie, clissify string) error {
 	if len(propertie) == 0 {
-        fmt.Println("point is empty")
+		fmt.Println("point is empty")
 		return nil
 	}
 	jsonstr, _ := json.Marshal(propertie)
@@ -91,6 +91,6 @@ func CreateTemplateObj(temp parse.IotTemplateObj) (string, error) {
 				return id.(string), nil
 			}
 		}
-	}*/ 
-	return temp.Id, nil 
+	}*/
+	return temp.Id, nil
 }

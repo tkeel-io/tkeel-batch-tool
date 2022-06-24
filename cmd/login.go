@@ -64,9 +64,10 @@ var loginCmd = &cobra.Command{
 			return
 		}
 
-		conf.DefaultConfig.IotUrl = fmt.Sprintf("%s/apis/tkeel-device",host)
+		conf.DefaultConfig.IotUrl = fmt.Sprintf("%s/apis/tkeel-device", host)
 		conf.DefaultConfig.Token = accessToken
 		conf.DefaultConfig.RefreshToken = refreshToken
+		conf.DefaultConfig.TenantId = tenantID
 		//config
 		if err := conf.SaveConfig("./config.json"); err != nil {
 			panic(err)

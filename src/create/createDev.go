@@ -12,6 +12,7 @@ import (
 	//"strings"
 	//"os"
 )
+
 func CreateDev(devMap map[string]*parse.DevInfo, f *excelize.File, order []string) error {
 
 	for _, devName := range order {
@@ -57,6 +58,6 @@ func createDev(dev *parse.DevInfo) (string, error) {
 				return id.(string), nil
 			}
 		}
-	}*/ 
+	}*/
 	return dev.CustomId, nil
 }

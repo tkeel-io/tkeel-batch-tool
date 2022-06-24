@@ -14,12 +14,12 @@ import (
 
 func DelMapper(mapperMap map[string]([]*parse.Expression)) error {
 	for k, v := range mapperMap {
-	    var paths []string
-        pathsMap := make(map[string]interface{})
+		var paths []string
+		pathsMap := make(map[string]interface{})
 		for _, p := range v {
 			paths = append(paths, p.Path)
 		}
-        pathsMap["paths"] = paths 
+		pathsMap["paths"] = paths
 		err := delMapper(k, pathsMap)
 		if err != nil {
 			fmt.Println("del devId = %s, error = %s \n", k, err)

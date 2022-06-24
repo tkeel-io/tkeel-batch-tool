@@ -15,8 +15,8 @@ import (
 
 func CreateMapper(mapperMap map[string]([]*parse.Expression), f *excelize.File) error {
 	for k, v := range mapperMap {
-        expMap := make(map[string]interface{})
-        expMap["expressions"] = v
+		expMap := make(map[string]interface{})
+		expMap["expressions"] = v
 		jsonstr, _ := json.Marshal(expMap)
 		resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/devices/"+k+"/relation", "POST", nil, jsonstr)
 		if err != nil {
