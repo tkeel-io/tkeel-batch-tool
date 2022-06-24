@@ -1,6 +1,6 @@
 {
     "northUrl": "",
-    "iotUrl": "http://tkeel.io:30080//apis/tkeel-device",
+    "iotUrl": "http://tkeel.io:30080/apis/tkeel-device",
     "token": "eyJhbGciOiJI************14UM2OikJQ",
     "access_key": "",
     "secretaccesskey": "",
