@@ -11,6 +11,7 @@ import (
 	"github.com/xuri/excelize/v2"
 	//"strings"
 	//"os"
+	"time"
 )
 
 func CreateSpaceTree(spaceTreeMap map[string]*parse.SpaceNodeInfo, f *excelize.File, order []string) error {
@@ -20,6 +21,7 @@ func CreateSpaceTree(spaceTreeMap map[string]*parse.SpaceNodeInfo, f *excelize.F
 		if !okd {
 			continue
 		}
+		time.Sleep(time.Duration(1000) * time.Millisecond)
 		_, err := createSpaceTree(node)
 		if err != nil {
 			fmt.Println(err)

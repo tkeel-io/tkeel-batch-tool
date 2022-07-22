@@ -56,7 +56,16 @@ func createPropertie(templateId string, propertie map[string]*parse.IotPropertie
 		fmt.Println("point is empty")
 		return nil
 	}
-	jsonstr, _ := json.Marshal(propertie)
+
+	var jsonstr []byte
+	if clissify == "telemetry" {
+		newMap := make(map[string]interface{})
+		newMap["tele"] = propertie
+		newMap["source"] = ""
+		jsonstr, _ = json.Marshal(newMap)
+	} else {
+		jsonstr, _ = json.Marshal(propertie)
+	}
 	fmt.Printf("%s", string(jsonstr))
 	resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/templates/"+templateId+"/"+clissify, "POST", nil, jsonstr)
 	if err != nil {
