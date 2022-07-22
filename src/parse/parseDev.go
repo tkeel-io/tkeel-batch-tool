@@ -7,7 +7,7 @@ import (
 	"github.com/xuri/excelize/v2"
 	"strconv"
 	"strings"
-    "tkeelBatchTool/src/conf"
+	"tkeelBatchTool/src/conf"
 )
 
 //xlsx setting
@@ -90,7 +90,7 @@ func formatDevInfo(xrmd xlsxRowMetaDevData) (*DevInfo, error) {
 
 	dev := &DevInfo{
 		Name:        xrmd.devName,
-        CustomId:    xrmd.devCustomId + "-" + conf.DefaultConfig.TenantId,
+		CustomId:    xrmd.devCustomId + "-" + conf.DefaultConfig.TenantId,
 		Description: xrmd.devDesc,
 
 		DirectConnection: xrmd.devDirectBool,

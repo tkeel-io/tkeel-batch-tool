@@ -62,7 +62,7 @@ func formatSpaceNodeInfo(xrmd xlsxRowMetaSpaceTreeData) (*SpaceNodeInfo, error) 
 		Name:        xrmd.curSpaceNodeName,
 		CustomId:    xrmd.curSpaceNodeCustomId + "-" + conf.DefaultConfig.TenantId,
 		ParentName:  xrmd.parentSpaceNodeName,
-		ParentId:    xrmd.parentSpaceNodeCustomId +"-" + conf.DefaultConfig.TenantId,
+		ParentId:    xrmd.parentSpaceNodeCustomId + "-" + conf.DefaultConfig.TenantId,
 		Description: xrmd.curSpaceNodeDesc,
 		Extension:   createSpaceNodeExt(xrmd),
 	}
