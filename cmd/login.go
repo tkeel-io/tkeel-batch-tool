@@ -86,7 +86,6 @@ var loginCmd = &cobra.Command{
 		conf.DefaultConfig.TenantID = tenantID
 		conf.DefaultConfig.Username = username
 		conf.DefaultConfig.Password = password
-
 		//config
 		if err := conf.SaveConfig("./config.json"); err != nil {
 			print.FailureStatusEvent(os.Stdout, "Login Failed: %s", err.Error())

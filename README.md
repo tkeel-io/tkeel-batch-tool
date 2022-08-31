@@ -41,7 +41,7 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 3.1 直接输入
 ```
-> tkeelBatchTool login http://tkeel.io:30080/ --tenant <your tenant name> --username <your username> --password <your password>
+> tkeelBatchTool login http://tkeel.io:30080 --tenant <your tenant name> --username <your username> --password <your password>
 
 ✅  You are Login as admin in tenant an!
 ✅  AccessToken is [eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NTk5MDQ4NSwic3ViIjoidXNyLTc3MzUwNWZkZDM1MzY1MTI3NDEyNmJlNmQyMDIifQ.HF9cUKDOmhvHooqwPSH1e3xKnpPNqyfhDlSLQ0aP45nSDptHigu06PbKkjcEEEvmDCMVlZ6wY_P55QZVZnb6Lg]

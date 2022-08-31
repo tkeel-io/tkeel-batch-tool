@@ -11,6 +11,7 @@ import (
 	"github.com/xuri/excelize/v2"
 	//"strings"
 	//"os"
+	"time"
 )
 
 func CreateSpaceTree(spaceTreeMap map[string]*parse.SpaceNodeInfo, f *excelize.File, order []string) error {
@@ -20,7 +21,8 @@ func CreateSpaceTree(spaceTreeMap map[string]*parse.SpaceNodeInfo, f *excelize.F
 		if !okd {
 			continue
 		}
-		_,err := createSpaceTree(node)
+		time.Sleep(time.Duration(1000) * time.Millisecond)
+		_, err := createSpaceTree(node)
 		if err != nil {
 			fmt.Println(err)
 			continue
@@ -31,11 +33,11 @@ func CreateSpaceTree(spaceTreeMap map[string]*parse.SpaceNodeInfo, f *excelize.F
 	return nil
 }
 
-func createSpaceTree(spaceNode *parse.SpaceNodeInfo) (string,error) {
+func createSpaceTree(spaceNode *parse.SpaceNodeInfo) (string, error) {
 	jsonstr, _ := json.Marshal(spaceNode)
 	resultMap, err := http.DoCreate(conf.DefaultConfig.IotUrl, "/v1/groups", "POST", nil, jsonstr)
 	if err != nil {
-		return "",err
+		return "", err
 	}
 	// todo
 	code, ok := resultMap["code"]
@@ -55,4 +57,3 @@ func createSpaceTree(spaceNode *parse.SpaceNodeInfo) (string,error) {
 	}*/
 	return "", nil
 }
-
