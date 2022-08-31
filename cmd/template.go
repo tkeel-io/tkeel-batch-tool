@@ -17,7 +17,9 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/dapr/cli/pkg/print"
 	"github.com/spf13/cobra"
+	"os"
 	"tkeelBatchTool/src/conf"
 	"tkeelBatchTool/src/create"
 	"tkeelBatchTool/src/del"
@@ -36,7 +38,8 @@ var templateCreateCmd = &cobra.Command{
 
 		//config
 		if err := conf.InitConfig("./config.json"); err != nil {
-			panic(err)
+			print.FailureStatusEvent(os.Stdout, "Login Failed: %s", err.Error())
+			return
 		}
 
 		if dataFile == "" || dataFile == " " {
