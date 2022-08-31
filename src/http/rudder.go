@@ -1,11 +1,8 @@
 package http
 
 import (
-	"bytes"
 	"fmt"
 	"github.com/tkeel-io/tdtl"
-	"io/ioutil"
-	"net/http"
 	"net/url"
 
 	"github.com/pkg/errors"

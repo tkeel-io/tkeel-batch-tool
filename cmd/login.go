@@ -30,9 +30,23 @@ var loginCmd = &cobra.Command{
 			cmd.Help()
 			return
 		}
+
+		//config
+		if err := conf.InitConfig("./config.json"); err != nil {
+			print.FailureStatusEvent(os.Stdout, "Login Failed: %s", err.Error())
+			return
+		}
+
 		host := args[0]
+		if host == "" {
+			prompt := &survey.Input{Message: "Please enter host: ", Default: conf.DefaultConfig.Host}
+			if err := survey.AskOne(prompt, &host); err != nil {
+				print.FailureStatusEvent(os.Stdout, "failed to read broker from stdin")
+				return
+			}
+		}
 		if tenant == "" {
-			prompt := &survey.Input{Message: "Please enter your tenant: "}
+			prompt := &survey.Input{Message: "Please enter your tenant: ", Default: conf.DefaultConfig.Tenant}
 			if err := survey.AskOne(prompt, &tenant); err != nil {
 				print.FailureStatusEvent(os.Stdout, "failed to read tenant from stdin")
 				return
@@ -45,14 +59,14 @@ var loginCmd = &cobra.Command{
 		}
 
 		if username == "" {
-			prompt := &survey.Input{Message: "Please enter your username: "}
+			prompt := &survey.Input{Message: "Please enter your username: ", Default: conf.DefaultConfig.Username}
 			if err := survey.AskOne(prompt, &username); err != nil {
 				print.FailureStatusEvent(os.Stdout, "failed to read username from stdin")
 				return
 			}
 		}
 		if password == "" {
-			prompt := &survey.Password{Message: "Please enter your password: "}
+			prompt := &survey.Input{Message: "Please enter your password: ", Default: conf.DefaultConfig.Password}
 			if err := survey.AskOne(prompt, &password); err != nil {
 				print.FailureStatusEvent(os.Stdout, "failed to read password from stdin")
 				return
@@ -67,10 +81,15 @@ var loginCmd = &cobra.Command{
 		conf.DefaultConfig.IotUrl = fmt.Sprintf("%s/apis/tkeel-device", host)
 		conf.DefaultConfig.Token = accessToken
 		conf.DefaultConfig.RefreshToken = refreshToken
-		conf.DefaultConfig.TenantId = tenantID
+		conf.DefaultConfig.Host = host
+		conf.DefaultConfig.Tenant = tenant
+		conf.DefaultConfig.TenantID = tenantID
+		conf.DefaultConfig.Username = username
+		conf.DefaultConfig.Password = password
 		//config
 		if err := conf.SaveConfig("./config.json"); err != nil {
-			panic(err)
+			print.FailureStatusEvent(os.Stdout, "Login Failed: %s", err.Error())
+			return
 		}
 
 		print.SuccessStatusEvent(os.Stdout, "You are Login as %s in tenant %s!", username, tenant)

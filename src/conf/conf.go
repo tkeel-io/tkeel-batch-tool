@@ -15,7 +15,16 @@ type Config struct {
 	AccessKey       string `json:"access_key"`
 	Secretaccesskey string `json:"secretaccesskey"`
 	RefreshToken    string `json:"refresh_token"`
-	TenantId        string `json:"tenant_id"`
+	Host            string `json:"host"`
+	Tenant          string `json:"tenant"`
+	TenantID        string `json:"tenant_id"`
+	Username        string `json:"username"`
+	Password        string `json:"password"`
+	Broker          string `json:"broker"`
+	DeviceID        string `json:"device_id"`
+	DeviceToken     string `json:"device_token"`
+	Template        string `json:"template"`
+	TemplateMode    string `json:"template_mode"`
 }
 
 func (c *Config) load(path string) error {
