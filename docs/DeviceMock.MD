@@ -9,7 +9,7 @@
 
 使用方式
 ```
-$ ./tkeelBatchTool -h
+$ ./tkeelBatchTool mock-example
 Mock template creat
 ? Please enter host:  http://preview.tkeel.io:30080/
 ? Please enter deviceID:  iotd-d33e5f4e-2d99-4aa3-9a1b-45af10bb9c0d
