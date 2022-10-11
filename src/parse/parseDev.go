@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	"strconv"
 	"strings"
 	"tkeelBatchTool/src/conf"
+
+	"github.com/xuri/excelize/v2"
 )
 
-//xlsx setting
+// xlsx setting
 var (
 	devTableNameStartIndex = 1
 	devStartRow            = 2
@@ -30,7 +31,7 @@ var (
 	//devGuidColNum = 8 //dev guid  for del
 )
 
-//row meta data
+// row meta data
 type xlsxRowMetaDevData struct {
 	spaceName string
 	spaceId   string
@@ -90,17 +91,17 @@ func formatDevInfo(xrmd xlsxRowMetaDevData) (*DevInfo, error) {
 
 	dev := &DevInfo{
 		Name:        xrmd.devName,
-		CustomId:    xrmd.devCustomId + "-" + conf.DefaultConfig.TenantId,
+		CustomId:    xrmd.devCustomId + "-" + conf.DefaultConfig.TenantID,
 		Description: xrmd.devDesc,
 
 		DirectConnection: xrmd.devDirectBool,
 		SelfLearn:        xrmd.devSelfLearnBool,
 
 		ParentName: xrmd.spaceName,
-		ParentId:   xrmd.spaceId + "-" + conf.DefaultConfig.TenantId,
+		ParentId:   xrmd.spaceId + "-" + conf.DefaultConfig.TenantID,
 
 		TemplateName: xrmd.devTemplateName,
-		TemplateId:   xrmd.devTemplateId + "-" + conf.DefaultConfig.TenantId,
+		TemplateId:   xrmd.devTemplateId + "-" + conf.DefaultConfig.TenantID,
 
 		Extension: createDevExt(xrmd),
 
