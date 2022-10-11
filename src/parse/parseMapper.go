@@ -3,12 +3,13 @@ package parse
 import (
 	"errors"
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	"strings"
 	"tkeelBatchTool/src/conf"
+
+	"github.com/xuri/excelize/v2"
 )
 
-//xlsx setting
+// xlsx setting
 var (
 	mapperTableNameStartIndex = 1
 	mapperStartRow            = 3
@@ -27,7 +28,7 @@ var (
 
 )
 
-//row meta data
+// row meta data
 type xlsxRowMetaMapperData struct {
 	dev1Name          string
 	dev1Id            string
@@ -54,7 +55,7 @@ type Expression struct {
 
 func formatExpression(xrmd xlsxRowMetaMapperData) (*Expression, error) {
 
-	xrmd.dev2Id += "-" + conf.DefaultConfig.TenantId
+	xrmd.dev2Id += "-" + conf.DefaultConfig.TenantID
 	expression := &Expression{
 		Name:        "fromBatchTool_" + xrmd.dev1Name,
 		Path:        xrmd.dev1PointClassify + "." + xrmd.dev1PointDataName,
@@ -205,14 +206,14 @@ func DoParseMapperExcel(filePath string, sRow int, eRow int) (map[string]([]*Exp
 				return nil, nil, err
 			}
 
-			array, ok := MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantId]
+			array, ok := MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantID]
 			if !ok {
 				array = make([]*Expression, 0)
-				MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantId] = array
+				MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantID] = array
 			}
 			expression, _ := formatExpression(xrmd)
 			if expression != nil {
-				MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantId] = append(MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantId], expression)
+				MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantID] = append(MapperMap[xrmd.dev1Id+"-"+conf.DefaultConfig.TenantID], expression)
 			}
 		}
 	}

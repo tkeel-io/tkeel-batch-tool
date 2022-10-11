@@ -2,8 +2,9 @@ package http
 
 import (
 	"fmt"
-	"github.com/tkeel-io/tdtl"
 	"net/url"
+
+	"github.com/tkeel-io/tdtl"
 
 	"github.com/pkg/errors"
 )
@@ -61,63 +62,4 @@ func GetTenantLoginToken(host, tenantID, username, password string) (accessToken
 	}
 	errMsg := cc.Get("msg").String()
 	return "", "", errors.Wrap(fmt.Errorf(errMsg), "get token error")
-}
-
-func Get(url string) (string, error) {
-	fmt.Println(url)
-	var (
-		err error
-		req *http.Request
-	)
-	req, err = http.NewRequest("GET", url, nil)
-	if err != nil {
-		return "", fmt.Errorf("error creat http request: %w", err)
-	}
-	req.Header.Set("Content-Type", "application/json")
-
-	var httpc http.Client
-
-	var r *http.Response
-	r, err = httpc.Do(req)
-	if err != nil {
-		return "", fmt.Errorf("error do http request: %w", err)
-	}
-	defer r.Body.Close()
-	return readResponse(r)
-
-}
-func Post(url string, data []byte) (string, error) {
-	fmt.Println(url)
-	var (
-		err error
-		req *http.Request
-	)
-	req, err = http.NewRequest("POST", url, bytes.NewBuffer(data))
-	if err != nil {
-		return "", fmt.Errorf("error creat http request: %w", err)
-	}
-	req.Header.Set("Content-Type", "application/json")
-
-	var httpc http.Client
-
-	var r *http.Response
-	r, err = httpc.Do(req)
-	if err != nil {
-		return "", fmt.Errorf("error do http request: %w", err)
-	}
-	defer r.Body.Close()
-	return readResponse(r)
-}
-
-func readResponse(response *http.Response) (string, error) {
-	rb, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		return "", fmt.Errorf("error read http response: %w", err)
-	}
-
-	if len(rb) > 0 {
-		return string(rb), nil
-	}
-
-	return "", nil
 }

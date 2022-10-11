@@ -4,13 +4,15 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+
 	"github.com/xuri/excelize/v2"
+
 	//"strconv"
 	"strings"
 	"tkeelBatchTool/src/conf"
 )
 
-//xlsx setting
+// xlsx setting
 var (
 	spaceTreeTableNameStartIndex = 1
 	spaceTreeStartRow            = 2
@@ -26,7 +28,7 @@ var (
 	curSpaceNodeDescColNum = 6
 )
 
-//row meta data
+// row meta data
 type xlsxRowMetaSpaceTreeData struct {
 	parentSpaceNodeName     string //spacc name
 	parentSpaceNodeCustomId string //spacc Guid
@@ -60,9 +62,9 @@ func formatSpaceNodeInfo(xrmd xlsxRowMetaSpaceTreeData) (*SpaceNodeInfo, error) 
 
 	spaceNode := &SpaceNodeInfo{
 		Name:        xrmd.curSpaceNodeName,
-		CustomId:    xrmd.curSpaceNodeCustomId + "-" + conf.DefaultConfig.TenantId,
+		CustomId:    xrmd.curSpaceNodeCustomId + "-" + conf.DefaultConfig.TenantID,
 		ParentName:  xrmd.parentSpaceNodeName,
-		ParentId:    xrmd.parentSpaceNodeCustomId + "-" + conf.DefaultConfig.TenantId,
+		ParentId:    xrmd.parentSpaceNodeCustomId + "-" + conf.DefaultConfig.TenantID,
 		Description: xrmd.curSpaceNodeDesc,
 		Extension:   createSpaceNodeExt(xrmd),
 	}

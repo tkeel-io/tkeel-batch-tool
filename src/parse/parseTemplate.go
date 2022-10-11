@@ -6,6 +6,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/tkeel-io/kit/log"
 	"github.com/xuri/excelize/v2"
+
 	//"strconv"
 	"strings"
 	//"time"
@@ -14,7 +15,7 @@ import (
 	"tkeelBatchTool/src/conf"
 )
 
-//xlsx setting
+// xlsx setting
 var (
 	templateTableNameStartIndex = 1 //开始表
 	templateStartRow            = 2 //开始行
@@ -30,7 +31,7 @@ var (
 	pointDescColNum     = 8 //测点说明
 )
 
-//row meta data
+// row meta data
 type xlsxRowMetaData struct {
 	templateName   string
 	templateNameId string
@@ -67,14 +68,14 @@ type IotPropertie struct {
 		Row       int*/
 }
 
-//fomat template
+// fomat template
 type IotTemplateObj struct {
 	Name        string `json :"name"`
 	Id          string `json:"customId"`
 	Description string `json:"description"`
 }
 
-//iot format Template
+// iot format Template
 type IotTemplate struct {
 	TemplateObj IotTemplateObj
 
@@ -87,7 +88,7 @@ type rangeKey struct {
 	rowStart, rowEnd int
 }
 
-//Template map
+// Template map
 var tkeelTemplateMap map[string]*IotTemplate
 
 func DoParseTemplateExcel(filePath string) (map[string]*IotTemplate, *excelize.File, error) {
@@ -273,7 +274,7 @@ func DoParseTemplateExcel(filePath string) (map[string]*IotTemplate, *excelize.F
 		}
 	}
 	for _, v := range tkeelTemplateMap {
-		v.TemplateObj.Id += "-" + conf.DefaultConfig.TenantId
+		v.TemplateObj.Id += "-" + conf.DefaultConfig.TenantID
 	}
 	//log.Debug("all templates ", tkeelTemplateMap)
 	return tkeelTemplateMap, f, err
